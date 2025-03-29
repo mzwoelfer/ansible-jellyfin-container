@@ -1,0 +1,4 @@
+- src: https://github.com/mzwoelfer/ansible-jellyfin-container.git
+  name: ansible-jellyfin-container 
+  scm: git
+  version: main

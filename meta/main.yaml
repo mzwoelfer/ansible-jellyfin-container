@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  role_name: ansible_jellyfin_container
+  author: mzwoelfer
+  description: Deploy Jellyfin in a container environment on Debian
+  license: MIT
+  min_ansible_version: '2.9'
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - media
+    - jellyfin
+    - docker
+dependencies: []

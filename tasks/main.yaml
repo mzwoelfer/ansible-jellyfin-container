@@ -1,0 +1,27 @@
+---
+- name: Create jellyfin main directory
+  file:
+    path: "{{ jellyfin_base_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Create required subdirectories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "{{ jellyfin_base_dir }}/cache"
+    - "{{ jellyfin_base_dir }}/config"
+    - "{{ jellyfin_media_dir }}"
+
+- name: Deploy compose file
+  template:
+    src: jellyfin-compose.yaml.j2
+    dest: "{{ jellyfin_base_dir }}/{{ jellyfin_compose_file }}"
+    mode: '0644'
+
+- name: Start jellyfin container using the specified runtime
+  command: "{{ container_runtime }} compose --file {{ jellyfin_compose_file }} up -d"
+  args:
+    chdir: "{{ jellyfin_base_dir }}"

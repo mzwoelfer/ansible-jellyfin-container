@@ -1,0 +1,10 @@
+---
+# Jellyfin basic setup
+jellyfin_version: latest
+jellyfin_base_dir: "{{ ansible_user_dir }}/jellyfin"
+jellyfin_media_dir: "{{ jellyfin_base_dir }}/media"
+
+jellyfin_compose_file: "jellyfin-compose.yaml"
+
+# Container runtime
+container_runtime: "docker"
