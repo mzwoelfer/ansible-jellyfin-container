@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: ansible_jellyfin_container
+  role_name: ansible-jellyfin-container
   author: mzwoelfer
   description: Deploy Jellyfin in a container environment on Debian
   license: MIT

@@ -1,5 +1,5 @@
 ---
 - hosts: jellyfin_server
   roles:
-    - role: ansible_jellyfin_container
+    - role: ansible-jellyfin-container
       become_user: "{{ ansible_user }}"

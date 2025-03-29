@@ -17,8 +17,8 @@ See: [defaults/main.yaml](defaults/main.yaml)
 ## Installation
 Create a `roles/requirements.yaml`:
 ```YAML
-- src: https://github.com/mzwoelfer/ansible_jellyfin_container.git
-  name: ansible_jellyfin_container 
+- src: https://github.com/mzwoelfer/ansible-jellyfin-container.git
+  name: ansible-jellyfin-container 
   scm: git
   version: main
 ```
@@ -27,7 +27,7 @@ Run a minimal playbook against your Jellyfin server:
 ```YAML
 - hosts: jellyfin_server
   roles:
-    - role: ansible_jellyfin_container
+    - role: ansible-jellyfin-container
       become_user: "{{ ansible_user }}"
 ```
 
@@ -38,7 +38,7 @@ Installs latest Jellyfin app via `nerdctl` with the `ansible_user` user
 ```YAML
 - hosts: jellyfin_server
   roles:
-    - role: ansible_jellyfin_container
+    - role: ansible-jellyfin-container
       become: false
       become_user: "{{ ansible_user }}"
       vars:
