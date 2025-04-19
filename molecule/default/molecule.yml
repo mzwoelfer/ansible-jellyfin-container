@@ -8,12 +8,14 @@ driver:
   name: docker
 platforms:
   - name: jellyfin-instance
-    image: geerlingguy/docker-debian12-ansible:latest
+    image: dokken/debian-12
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - /var/run/docker.sock:/var/run/docker.sock
     cgroupns_mode: host
+    cgroup_parent: docker.slice
+    command: /lib/systemd/systemd
     pre_build_image: true
 provisioner:
   name: ansible
