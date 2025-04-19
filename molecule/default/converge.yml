@@ -4,4 +4,4 @@
   become: true
 
   roles:
-    - role: .
+    - role: mzwoelfer.jellyfin_container

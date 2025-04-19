@@ -6,6 +6,9 @@ on:
       - master
   pull_request:
 
+defaults:
+  run:
+    working-directory: 'mzwoelfer.jellyfin_container'
 
 jobs:
   molecule:
@@ -15,6 +18,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          path: 'mzwoelfer.jellyfin_container'
 
       - name: Set up Python
         uses: actions/setup-python@v5
