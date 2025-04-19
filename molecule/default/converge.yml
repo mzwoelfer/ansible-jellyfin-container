@@ -20,4 +20,5 @@
     failed_when: systemctl_status.rc > 1
 
   roles:
+    - role: geerlingguy.docker
     - role: mzwoelfer.jellyfin_container
