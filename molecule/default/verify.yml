@@ -1,0 +1,14 @@
+---
+- name: Verify Jellyfin is running
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Wait until Jellyfin web interface is up
+      ansible.builtin.uri:
+        url: http://localhost:8096
+        status_code: 200
+      register: result
+      retries: 10
+      delay: 3
+      until: result.status == 200
