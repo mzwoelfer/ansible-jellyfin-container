@@ -8,7 +8,13 @@
       ansible.builtin.uri:
         url: http://localhost:8096
         status_code: 200
-      register: result
+      register: jellyfin_response
       retries: 10
       delay: 3
       until: result.status == 200
+
+    - name: Check if Jellyfin welcome page is displayed
+      ansible.builtin.assert:
+        that: "'Welcome to Jellyfin!' in jellyfin_response.content"
+        fail_msg: "Jellyfin welcome text not found"
+        success_msg: "Jellyfin welcome page verified successfully."
