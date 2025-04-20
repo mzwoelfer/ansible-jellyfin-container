@@ -11,7 +11,7 @@
       register: jellyfin_response
       retries: 10
       delay: 3
-      until: result.status == 200
+      until: jellyfin_response.status == 200
 
     - name: Check if Jellyfin welcome page is displayed
       ansible.builtin.assert:
