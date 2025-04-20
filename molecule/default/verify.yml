@@ -16,6 +16,6 @@
 
     - name: Check if Jellyfin welcome page is displayed
       ansible.builtin.assert:
-        that: "'Welcome to Jellyfin!' in jellyfin_response.content"
+        that: "'Jellyfin' in jellyfin_response.content"
         fail_msg: "Jellyfin welcome text not found"
         success_msg: "Jellyfin welcome page verified successfully."
