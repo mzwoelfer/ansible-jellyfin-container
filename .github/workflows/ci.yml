@@ -1,0 +1,39 @@
+name: Molecule CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+defaults:
+  run:
+    working-directory: 'mzwoelfer.jellyfin_container'
+
+jobs:
+  molecule:
+    name: Molecule Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: 'mzwoelfer.jellyfin_container'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: pip install ansible molecule molecule-plugins[docker] docker
+
+      - name: Install Ansible Galaxy roles
+        run: ansible-galaxy install -r molecule/default/requirements.yml
+
+      - name: Run Molecule
+        run: molecule test
+        env:
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"

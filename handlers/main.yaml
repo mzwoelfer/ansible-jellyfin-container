@@ -1,0 +1,5 @@
+---
+- name: Restart jellyfin container
+  command: "{{ container_runtime }} compose --file {{ jellyfin_compose_file }} up -d --force-recreate"
+  args:
+    chdir: "{{ jellyfin_base_dir }}"

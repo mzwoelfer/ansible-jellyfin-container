@@ -1,0 +1,21 @@
+---
+- name: Verify Jellyfin is running
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Wait until Jellyfin web interface is up
+      ansible.builtin.uri:
+        url: http://localhost:8096
+        status_code: 200
+        return_content: true
+      register: jellyfin_response
+      retries: 10
+      delay: 3
+      until: jellyfin_response.status == 200
+
+    - name: Check if Jellyfin welcome page is displayed
+      ansible.builtin.assert:
+        that: "'Jellyfin' in jellyfin_response.content"
+        fail_msg: "Jellyfin welcome text not found"
+        success_msg: "Jellyfin welcome page verified successfully."
